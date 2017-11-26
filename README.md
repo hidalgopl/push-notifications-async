@@ -29,12 +29,13 @@ from notifications.tasks import push_to_all_devices
 
 @api_view(['POST'])
 def send_test_push(request):
-    receiver_id = request.POST.data['receiver_id']
-    message = request.POST.data['message']
+    receiver_id = request.POST['receiver_id']
+    message = request.POST['message']
     push_to_all_devices.delay(message, receiver_id)
     return Response(data={'info': 'Push notification sent.'})
 
 ```
+`urls.py`
 ```python
 from django.conf.urls import include, url
 from django.contrib import admin
