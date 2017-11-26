@@ -1,0 +1,30 @@
+version: '2'
+services:
+  app-api:
+    restart: always
+    build: .
+    command: ["./docker-run.sh"]
+    ports:
+      - "4000:8080"
+    volumes:
+      - .:/home/application/app
+    environment:
+      - ENVIRONMENT=dev
+      - DJANGO_SETTINGS_MODULE=settings.settings
+    links:
+      - redis
+
+  redis:
+    image: redis:latest
+    container_name: redis-push
+    ports:
+      - "6389:6379"
+
+  celery:
+    build: .
+    container_name: celery-push
+    command: sh run_celery.sh
+    volumes:
+      - .:/home/application/app
+    links:
+      - redis
