@@ -126,3 +126,15 @@ STATIC_URL = '/static/'
 
 CELERY_BROKER_URL = 'redis://redis:6379/0'
 CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+
+PUSH_NOTIFICATIONS_SETTINGS = {
+    "FCM_API_KEY": "", # paste your firebase API key here
+    "FCM_ERROR_TIMEOUT": 3,
+    "APNS_CERTIFICATE": os.path.join(BASE_DIR, ""),  # paste APNS certificate to the project directory and provide here correct path
+    "APNS_USE_SANDBOX": True,
+    "USER_MODEL": "auth.User", # change if needed
+    "UPDATE_ON_DUPLICATE_REG_ID": True,
+    "APNS_TOPIC": "", # paste your apns topic here.
+    # "WNS_PACKAGE_SECURITY_ID": "[your package security id, e.g: 'ms-app://e-3-4-6234...']",
+    # "WNS_SECRET_KEY": "[your app secret key, e.g.: 'KDiejnLKDUWodsjmewuSZkk']",
+}

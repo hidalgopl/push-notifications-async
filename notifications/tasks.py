@@ -40,4 +40,7 @@ def push_to_all_devices(message, user_id, extra_dict={}):
         apns_device.send_message(message, extra=extra_dict)
     if fcm_device is not None and (isinstance(fcm_device, GCMDevice) or isinstance(fcm_device, GCMDeviceQuerySet)):
         fcm_device.send_message(message, extra=extra_dict)
-    logger.info('Push notification sent: {}, \n extra_data: {} \n receiver: {}'.format(message, extra_dict, user_id))
+    if len(apns_device) + len(fcm_device) > 0:
+        logger.info('Push notification sent: {}, \n extra_data: {} \n receiver: {}'.format(message, extra_dict, user_id))
+    else:
+        logger.info('There are no registered devices for given receiver.')
