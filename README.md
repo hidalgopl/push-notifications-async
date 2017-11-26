@@ -10,7 +10,7 @@ Components used:
 
 ## How to run
 If you have docker and docker-compose installed, simply go to the project main directory and type `docker-compose up -d`.
-Project is now running on port 400 on your localhost. Go to the http://localhost:4000/notifications/test/ to send test push.
+Project is now running on port 4000 on your localhost. Go to the http://localhost:4000/notifications/test/ to send test push.
 
 
 ## Usage
